@@ -8,6 +8,13 @@
     "lint": "eslint .",
     "lint-fix": "eslint --fix --ext .js ."
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aaron-Zhao/js-utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Aaron-Zhao/js-utils/issues"
+  },
   "author": "Aaron Zhao <yujianzhao2013@gmail.com>",
   "license": "MIT",
   "keywords": [

@@ -7,7 +7,7 @@ Run `npm install`, after the install run `npm test` to run the test cases.
 # Install
 `npm install --save js-utils`
 
-# Require example
+# Import
 ```js
 const { Heap } = require('js-utils');
 ```
