@@ -7,8 +7,14 @@ Run `npm install`, after the install run `npm test` to run the test cases.
 # Install
 `npm install --save js-utils`
 
-# Example usage
-`const { Heap } = require('js-utils');` or `import { Heap } from 'js-utils';`
+# Require example
+```js
+const { Heap } = require('js-utils');
+```
+or
+```js
+import { Heap } from 'js-utils';
+```
 
 # License
 MIT
