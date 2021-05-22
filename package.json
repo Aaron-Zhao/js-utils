@@ -1,0 +1,23 @@
+{
+  "name": "js-util",
+  "version": "1.0.0",
+  "description": "js-utils provides JavaScript utility functions including commonly used data structures similar to Java util library.",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "author": "Aaron Zhao <yujianzhao2013@gmail.com>",
+  "license": "",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.19.1",
+    "grunt": "^1.0.4",
+    "grunt-eslint": "^22.0.0",
+    "grunt-mocha-istanbul": "^5.0.2",
+    "grunt-mocha-test": "^0.13.3",
+    "istanbul": "^0.4.5",
+    "mocha": "^6.2.2"
+  }
+}
