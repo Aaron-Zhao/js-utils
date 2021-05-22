@@ -1,6 +1,7 @@
 {
   "rules": {
     "max-len": ["error", { "code": 80, "ignoreComments": true }],
+    "indent": ["error", 4],
     "comma-dangle": ["error", {
       "functions": "ignore"
     }],
