@@ -3,7 +3,7 @@
  * @license MIT
  * Heap implementation using 1-d array
  * Children is index of 2n + 1 and 2n + 2 where n is the parent index
- * Parent is math.floor((m - 1) / 2) where m is is the child index 
+ * Parent is math.floor((m - 1) / 2) where m is is the child index
  * @class Heap
  */
 class Heap {
@@ -16,17 +16,19 @@ class Heap {
     */
     constructor(data, comparator) {
         this._data = [];
-        this._comparator = function(a, b) {
+        this._comparator = function compare(a, b) {
             return a >= b;
         };
         if (data != null) {
-            if (!Array.isArray(data))
+            if (!Array.isArray(data)) {
                 throw Error('Constructor expects data to be an array');
+            }
             this._data = data;
         }
         if (comparator != null) {
-            if (typeof comparator !== 'function')
+            if (typeof comparator !== 'function') {
                 throw Error('Constructor expects comparator to be a function');
+            }
             this._comparator = comparator;
         }
     }
@@ -46,15 +48,14 @@ class Heap {
     * @returns {string|number|object} root of the heap
     */
     pop() {
-        if (this.size() < 1)
-            return undefined;
-        let root = this._data[0];
+        if (this.size() < 1) { return undefined; }
+        const root = this._data[0];
         this.swap(this.size() - 1, 0);
         this._data.pop();
         this.heapifyDown(0);
         return root;
     }
-    
+
     /**
     * Returns and replaces the root of the heap
     * @public
@@ -62,9 +63,8 @@ class Heap {
     * @returns {string|number|object} root of the heap
     */
     replaceTop(val) {
-        if (this.size() < 1)
-            return undefined;
-        let root = this._data[0];
+        if (this.size() < 1) { return undefined; }
+        const root = this._data[0];
         this._data[0] = val;
         this.heapifyDown(0);
         return root;
@@ -96,7 +96,7 @@ class Heap {
     * @param {number} e
     */
     swap(s, e) {
-        let temp = this._data[s];
+        const temp = this._data[s];
         this._data[s] = this._data[e];
         this._data[e] = temp;
     }
@@ -107,8 +107,8 @@ class Heap {
     * @param {number} index
     */
     heapifyUp(index) {
-        if (index == 0) return;
-        let parent = Math.floor((index - 1) / 2);
+        if (index === 0) return;
+        const parent = Math.floor((index - 1) / 2);
         if (this._comparator(this._data[index], this._data[parent])) return;
         this.swap(index, parent);
         this.heapifyUp(parent);
@@ -120,10 +120,11 @@ class Heap {
     * @param {number} index
     */
     heapifyDown(index) {
-        let left = index * 2 + 1;
-        let right = index * 2 + 2;
+        const left = index * 2 + 1;
+        const right = index * 2 + 2;
         if (left >= this._data.length) return;
-        let child = (right < this._data.length && !this._comparator(this._data[right], this._data[left])) ? right : left;
+        const child = (right < this._data.length
+            && !this._comparator(this._data[right], this._data[left])) ? right : left;
         if (!this._comparator(this._data[index], this._data[child])) return;
         this.swap(index, child);
         this.heapifyDown(child);
