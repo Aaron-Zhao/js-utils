@@ -38,10 +38,9 @@ class Queue {
     enqueue(item) {
         if (this._cap != null && this.size() >= this._cap) {
             return false;
-        } else {
-            this._data.push(item);
-            return true;
         }
+        this._data.push(item);
+        return true;
     }
 
     /**
@@ -75,9 +74,8 @@ class Queue {
     peek(tail = false) {
         if (this.size() > 0) {
             return tail ? this._data[this._data.length - 1] : this._data[this._head];
-        } else {
-            return null;
         }
+        return null;
     }
 
     /**
@@ -113,7 +111,7 @@ class Queue {
      * @param {function(item, index)} callback
      */
     forEach(callback) {
-        for (let i = this._head; i < this._data.length; i++) {
+        for (let i = this._head; i < this._data.length; i += 1) {
             callback(this._data[i], i - this._head);
         }
     }

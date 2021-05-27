@@ -71,28 +71,27 @@ describe('Queue tests', () => {
             const head = queue2.dequeue();
             expect(head).to.equal(5);
             expect(queue2.size()).to.equal(2);
-            expect(queue2._head).to.equal(0);
         });
     });
 
     describe('forEach()', () => {
         it('should iterate through queue', () => {
             const values = [5, 7, 6, 3, 1, 9];
-            
-            values.forEach(function(v) {
+
+            values.forEach((v) => {
                 queue1.enqueue(v);
             });
 
             expect(queue1.size()).to.equal(values.length);
-            
-            queue1.forEach(function(v ,i) {
+
+            queue1.forEach((v, i) => {
                 expect(v).to.equal(values[i]);
             });
-            
+
             queue1.dequeue();
             queue1.dequeue();
 
-            queue1.forEach(function(v ,i) {
+            queue1.forEach((v, i) => {
                 expect(v).to.equal(values[i + 2]);
             });
         });
@@ -101,7 +100,7 @@ describe('Queue tests', () => {
     describe('toArray()', () => {
         it('should return array representation of the queue', () => {
             const result = [6, 3, 1, 9];
-            queue1.toArray().forEach(function(v, i) {
+            queue1.toArray().forEach((v, i) => {
                 expect(v).to.equal(result[i]);
             });
         });
