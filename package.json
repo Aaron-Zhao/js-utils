@@ -20,8 +20,9 @@
   "keywords": [
     "js utils",
     "heap",
-    "heap js",
-    "heap data structure"
+    "heap data structure",
+    "queue",
+    "queue data structure"
   ],
   "devDependencies": {
     "chai": "^4.2.0",

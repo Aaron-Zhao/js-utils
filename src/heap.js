@@ -39,7 +39,7 @@ class Heap {
     * @returns {string|number|object} root of the heap
     */
     peek() {
-        return this._data[0];
+        return this.size() < 1 ? null : this._data[0];
     }
 
     /**
@@ -48,7 +48,9 @@ class Heap {
     * @returns {string|number|object} root of the heap
     */
     pop() {
-        if (this.size() < 1) { return undefined; }
+        if (this.size() < 1) {
+            return null;
+        }
         const root = this._data[0];
         this.swap(this.size() - 1, 0);
         this._data.pop();
@@ -63,7 +65,9 @@ class Heap {
     * @returns {string|number|object} root of the heap
     */
     replaceTop(val) {
-        if (this.size() < 1) { return undefined; }
+        if (this.size() < 1) {
+            return null;
+        }
         const root = this._data[0];
         this._data[0] = val;
         this.heapifyDown(0);
@@ -103,7 +107,7 @@ class Heap {
 
     /**
     * Move the item from the input index to its appropriate place up in the tree
-    * @public
+    * @private
     * @param {number} index
     */
     heapifyUp(index) {
@@ -116,7 +120,7 @@ class Heap {
 
     /**
     * Move the item from the input index to its appropriate place down in the tree
-    * @public
+    * @private
     * @param {number} index
     */
     heapifyDown(index) {

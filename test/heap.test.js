@@ -2,8 +2,9 @@ const { expect } = require('chai');
 const Heap = require('../src/heap');
 
 describe('Heap tests', () => {
-    let minHeap; let maxHeap; let
-        objectMinHeap;
+    let minHeap;
+    let maxHeap;
+    let objectMinHeap;
 
     describe('constructor(data, comparator)', () => {
         it('creates an instance min heap', () => {
@@ -38,9 +39,9 @@ describe('Heap tests', () => {
             expect(root).to.equal(5);
         });
 
-        it('should return undefined if empty heap', () => {
+        it('should return null if empty heap', () => {
             const root = minHeap.peek();
-            expect(root).to.equal(undefined);
+            expect(root).to.equal(null);
         });
     });
 
@@ -87,9 +88,9 @@ describe('Heap tests', () => {
             expect(maxHeap.size()).to.equal(size);
         });
 
-        it('should return undefined if empty heap', () => {
+        it('should return null if empty heap', () => {
             const root = minHeap.pop();
-            expect(root).to.equal(undefined);
+            expect(root).to.equal(null);
         });
     });
 
@@ -104,9 +105,9 @@ describe('Heap tests', () => {
             expect(maxHeap.size()).to.equal(size);
         });
 
-        it('should return undefined if empty heap', () => {
+        it('should return null if empty heap', () => {
             const root = minHeap.replaceTop(1);
-            expect(root).to.equal(undefined);
+            expect(root).to.equal(null);
         });
     });
 });
