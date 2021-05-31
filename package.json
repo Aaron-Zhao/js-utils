@@ -1,6 +1,6 @@
 {
   "name": "js-utils-z",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "js-utils-z provides JavaScript utility functions including commonly used data structures similar to Java util library.",
   "main": "index.js",
   "scripts": {
