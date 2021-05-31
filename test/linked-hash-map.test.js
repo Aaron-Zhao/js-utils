@@ -54,8 +54,10 @@ describe('Linked hash map tests', () => {
         });
 
         it('should chain previous() next()', () => {
-            expect(map1.head().next().next().previous().next().value).to.equal('item 2');
-            expect(map1.tail().previous().next().previous().next().value).to.equal('item 2');
+            expect(map1.head().next().next().previous()
+                .next().value).to.equal('item 2');
+            expect(map1.tail().previous().next().previous()
+                .next().value).to.equal('item 2');
         });
     });
 
@@ -106,28 +108,28 @@ describe('Linked hash map tests', () => {
 
     describe('keys() values() entries()', () => {
         it('should iterate in inserting order with correct key/value', () => {
-            const items = [{k: 4, v: 'item 4'}, {k: 5, v: 'item 5'}, {k: 6, v: 'item 6'}, {k: 7, v: 'item 7'}];
-            items.forEach(item => {
+            const items = [{ k: 4, v: 'item 4' }, { k: 5, v: 'item 5' }, { k: 6, v: 'item 6' }, { k: 7, v: 'item 7' }];
+            items.forEach((item) => {
                 map1.put(item.k, item.v);
             });
 
             expect(map1.size()).to.equal(4);
 
             let ikey = items[0].k;
-            for (let key of map1.keys()) {
+            for (const key of map1.keys()) {
                 expect(key).to.equal(ikey);
-                ikey++;
+                ikey += 1;
             }
             ikey = items[0].k;
-            for (let val of map1.values()) {
-                expect(val).to.equal('item ' + ikey);
-                ikey++;
+            for (const val of map1.values()) {
+                expect(val).to.equal(`item ${ikey}`);
+                ikey += 1;
             }
             ikey = items[0].k;
-            for (let [key, val] of map1.entries()) {
+            for (const [key, val] of map1.entries()) {
                 expect(key).to.equal(ikey);
-                expect(val).to.equal('item ' + ikey);
-                ikey++;
+                expect(val).to.equal(`item ${ikey}`);
+                ikey += 1;
             }
         });
     });
@@ -136,11 +138,11 @@ describe('Linked hash map tests', () => {
         it('should return array with correct values in inserting order', () => {
             const arr = map1.toArray();
             expect(arr).to.be.instanceof(Array);
-            ikey = 4;
+            let ikey = 4;
             arr.forEach((item) => {
                 expect(item.key).to.equal(ikey);
-                expect(item.value).to.equal('item ' + ikey);
-                ikey++;
+                expect(item.value).to.equal(`item ${ikey}`);
+                ikey += 1;
             });
         });
 
@@ -148,11 +150,11 @@ describe('Linked hash map tests', () => {
             map1.put(3, 'item 3', true);
             const arr = map1.toArray('orderByLink');
             expect(arr).to.be.instanceof(Array);
-            ikey = 3;
+            let ikey = 3;
             arr.forEach((item) => {
                 expect(item.key).to.equal(ikey);
-                expect(item.value).to.equal('item ' + ikey);
-                ikey++;
+                expect(item.value).to.equal(`item ${ikey}`);
+                ikey += 1;
             });
         });
     });

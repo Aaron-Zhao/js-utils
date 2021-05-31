@@ -4,7 +4,7 @@
  * Linked hash map data structure
  * @class LinkedHashMap
  */
- class LinkedHashMap {
+class LinkedHashMap {
     /**
     * Creates a linked hash map instance
     * @public
@@ -36,16 +36,14 @@
         if (this._head == null) {
             this._head = key;
             this._tail = key;
+        } else if (head) {
+            this._link.get(this._head).previous = key;
+            this._link.get(key).next = this._head;
+            this._head = key;
         } else {
-            if (head) {
-                this._link.get(this._head).previous = key;
-                this._link.get(key).next = this._head;
-                this._head = key;
-            } else {
-                this._link.get(this._tail).next = key;
-                this._link.get(key).previous = this._tail;
-                this._tail = key;
-            }
+            this._link.get(this._tail).next = key;
+            this._link.get(key).previous = this._tail;
+            this._tail = key;
         }
     }
 
@@ -55,7 +53,9 @@
      * @returns {any} key, item, next(), previous()
      */
     head() {
-        return ({ key: this._head, value: this.get(this._head), next: () => this.next(this._head), previous: () => null });
+        return ({
+            key: this._head, value: this.get(this._head), next: () => this.next(this._head), previous: () => null
+        });
     }
 
     /**
@@ -64,7 +64,9 @@
      * @returns {any} key, item, next(), previous()
      */
     tail() {
-        return ({ key: this._tail, value: this.get(this._tail), next: () => null, previous: () => this.previous(this._tail) });
+        return ({
+            key: this._tail, value: this.get(this._tail), next: () => null, previous: () => this.previous(this._tail)
+        });
     }
 
     /**
@@ -105,8 +107,13 @@
      * @returns {any} key, item, next(), previous()
      */
     previous(key) {
-        const _key = this.previousKey(key);
-        return ({ key: _key, value: this.get(_key), next: () => this.next(_key), previous: () => this.previous(_key) });
+        const prevKey = this.previousKey(key);
+        return ({
+            key: prevKey,
+            value: this.get(prevKey),
+            next: () => this.next(prevKey),
+            previous: () => this.previous(prevKey)
+        });
     }
 
     /**
@@ -137,8 +144,13 @@
      * @returns {any} key, item, next(), previous()
      */
     next(key) {
-        const _key = this.nextKey(key);
-        return ({ key: _key, value: this.get(_key), next: () => this.next(_key), previous: () => this.previous(_key) });
+        const nextKey = this.nextKey(key);
+        return ({
+            key: nextKey,
+            value: this.get(nextKey),
+            next: () => this.next(nextKey),
+            previous: () => this.previous(nextKey)
+        });
     }
 
     /**
@@ -231,7 +243,7 @@
     entries() {
         return this._data.entries();
     }
-    
+
     /**
      * Returns array representation of the map values
      * @public
@@ -242,14 +254,13 @@
         if (order !== 'orderByInsert') {
             const linkOrderArr = [];
             let next = this._head;
-            while(next != null) {
-                linkOrderArr.push({ key: next, value: this.get(next)});
+            while (next != null) {
+                linkOrderArr.push({ key: next, value: this.get(next) });
                 next = this.nextKey(next);
             }
             return linkOrderArr;
-        } else {
-            return Array.from(this.keys()).map(k => ({ key: k, value: this.get(k)}));
         }
+        return Array.from(this.keys()).map((k) => ({ key: k, value: this.get(k) }));
     }
 }
 
